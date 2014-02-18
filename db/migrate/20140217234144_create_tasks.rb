@@ -3,7 +3,7 @@ class CreateTasks < ActiveRecord::Migration
     create_table :tasks do |t|
       t.string :name
       t.references :user
-      t.bollean :status
+      t.boolean :status
 
       t.timestamps
     end

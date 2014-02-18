@@ -2,8 +2,8 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
-
+    # @tasks = Task.all
+    @tasks = Task.order("created_at DESC")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tasks }
@@ -25,7 +25,7 @@ class TasksController < ApplicationController
   # GET /tasks/new.json
   def new
     @task = Task.new
-
+    @UseR.all.map { |user| user.name, user.id }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @task }
@@ -41,7 +41,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(params[:task])
-
+    @user.all.map { |user| user.name, user.id }
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
